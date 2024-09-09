@@ -47,7 +47,7 @@ void inorder(struct Node* root){
 	if(root!=NULL){
 		
 		inorder(root->left);
-		printf("%d", root->data);
+		printf("%d ", root->data);
 		inorder(root->right);
 	}
 }
@@ -55,7 +55,7 @@ void inorder(struct Node* root){
 void preorder(struct Node* root){
 	
 	if(root!=NULL){
-		printf("%d", root->data);
+		printf("%d ", root->data);
 		preorder(root->left);
 		preorder(root->right);
 	}
@@ -66,7 +66,7 @@ void postorder(struct Node* root){
 	if(root!=NULL){
 		postorder(root->left);
 		postorder(root->right);
-		printf("%d", root->data);
+		printf("%d ", root->data);
 	}
 }
 
@@ -80,6 +80,30 @@ int height(struct Node* root){
 	int right_h = height(root->right);
 	
 	return left_h>right_h?left_h:right_h +1;
+}
+
+void max(struct Node* root){
+
+	struct Node* p;
+	p=root;
+
+	while(p->right != NULL){
+		p=p->right;
+	}
+
+	printf("The maximum number is:%d\n", p->data);
+}
+
+void min(struct Node* root){
+
+	struct Node* p;
+	p=root;
+
+	while(p->left != NULL){
+		p=p->left;
+	}
+
+	printf("The minimum number is:%d\n", p->data);
 }
 
 int main(){
@@ -105,5 +129,8 @@ int main(){
 	postorder(root);
 	printf("\n");
 	
-	printf("Height: %d", height(root));
+	printf("Height: %d\n", height(root));
+
+	min(root);
+	max(root);
 }
